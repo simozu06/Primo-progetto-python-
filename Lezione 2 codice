@@ -1,0 +1,79 @@
+'''
+# chiedo un numero all'utente 
+a = input('scrivi un numero')
+#cosa contiene a 
+print(a) 
+#se metto spazi a caso cosa succede? (lo metto come un commento perchè mi darà errore e se no non gira)
+# a = input ('dammi un numero')
+#     print(a)
+#scrivere un programma che sakuta il mondo 
+#
+# File: HelloWorld.py
+#
+# Author: Simone Zuppa
+#
+# Date: 2026/03/03
+#
+# Version: 1.0
+#
+# Description: My First Project Program to print "Hello, World!".
+print('Hello, World!')
+'''
+import turtle               # Importo modulo (il modulo è un insieme d'istruzioni già scritto) turtle
+
+window = turtle.Screen()    # Creo una finestra dove lavorare (creo un oggetto di tipo schermo dove disegnare)
+Annalisa = turtle.Turtle() # Creo una tartaruga e la assegno alla variabile "Annalisa"
+
+Annalisa.color('green')     #Annalisa colorerà con un colore diverso
+
+'''
+Annalisa.forward(50)       # Dico a "Annalisa" di andare avanti di 50 passi
+Annalisa.left(90)          # Dico a "Annalisa" di girare a sinistra di 90 gradi
+Annalisa.forward(50)       # Dico a "Annalisa" di andare avanti di 30 passi
+
+#voglio dire ad Annalisa di disegnare un quadrato partendo con le operazioni delle righe 30-32
+Annalisa.left(90)
+Annalisa.forward(50)
+Annalisa.left(90)
+Annalisa.forward(50)
+Annalisa.left(90)  
+'''
+
+#introduciamo una nuova tartaruga Felicia 
+
+Felicia = turtle.Turtle()
+Felicia.color('red')
+
+'''
+# Facciamo fare a Felicia un triangolo equilatero 
+Felicia.forward(50)
+Felicia.left(120)
+Felicia.forward(50)
+Felicia.left(120)
+Felicia.forward(50)
+Felicia.left(120)
+'''
+
+#Programmazione strutturata
+# La prima struttura che incontriamo sono i loop control ovvero for e while 
+# (Ricordiamo però gli spazi per fare i blocchi)
+#Rifacciamo il quadrato ma con il ciclo
+for i in [0, 1, 2, 3] :   #Non per forza devo avere numeri da 0 a 3 ma posso anche avere anche il ciclo per i colori riga 68
+
+  Annalisa.forward(50)
+  Annalisa.left(90)
+
+for i in range(0, 4, 1):   #Parto da 0 e faccio dei passi di 1 (questi li fa anche in maniera standard)fino ad arrivare a 4 (escluso) 
+  Annalisa.forward(50)
+  Annalisa.left(90)
+  
+for c in ['red', 'purple', 'yellow', 'blue']: 
+    Felicia.color(c)     # usiamo il valore di c assegnato ad ogni iterazione
+    Felicia.forward(50)
+    Felicia.left(120)
+
+#La condizione è una boolean exprection ovvero un espressione che può assumere valore di vero o falso
+#Vi sono poi gli if...else con le rispettive condizioni che vengono fatte in caso usando gli operatori logici or o and 
+#Ci sono poi gli elif e gli if annidati 
+  
+window.mainloop()           # Attende che l'utente chiuda la finestra di gioco o fermi il programma prependo stop
