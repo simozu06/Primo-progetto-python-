@@ -30,6 +30,8 @@ positivo e lo restituisca come risultato della funzione. Se l’utente inserisce
 non valido (es. negativo o zero), il ciclo deve continuare a richiederlo finché l’input 
 non è corretto.
 '''
+#Problema da risolvere: sulla variabile se metti una stringa o comunque non un numero non sai se devi risolvere sta roba
+
 '''
 def intero_positivo (n): 
     n = 0   #preimposto come valore di n zero in modo da entrare nel ciclo
@@ -83,29 +85,30 @@ Quarta parte: Scrivete una funzione analizza_sequenza(lista) che riceva la lista
 e restituisca tre valori: il valore massimo raggiunto, la lunghezza della sequenza e la 
 somma di tutti i numeri.
 ''' 
-
-def analizza_sequenza (x):          #Per x intendo la lista che dveo prende in input
-    giri = 0     #Stessa operazione del punto prima per creare la lista
+'''
+def analizza_sequenza (x):          #Per x intendo la lista che devo prendere in input
+    giri = 0       #Inizializzo il numero di giri a 0 e ad ogni giro del ciclo aumento questo numeor di 1 (andrà poi a ad indicare la lunghezza della stringa finale)
     numeri = [] 
-    massimo = x 
-    z = x      
-    while (z != 1 and giri<100):
-        if (z%2 == 0): 
-                z = x / 2 
+    massimo = x     #Dichiaro una variabile che si chiama massimo e la inizializzo al valore x
+    somma = x       #Inizializzo una variabile somma al valore di x e la aggiorno ad ogni giro 
+    while (x != 1 and giri<100):     #Faccio lo stesso ciclo di prima con l'if...else per costruire la stringa come da richiesta
+        if (x%2 == 0): 
+            x = x / 2 
         else: 
-                z = (3 * x) + 1 
+            x = (3 * x) + 1
+        if (x > massimo):     #Questo if serve per controllare se il nuovo valore è maggiore di quello vecchio e in caso affermativo ridefinire il massimo
+            massimo = x  
         giri = giri + 1 
-        if (z > x): 
-            massimo = z 
-        numeri.append (z)    
+        numeri.append (x)
+        somma = somma + x     #Aggiorno la variabile somma aggiungendo a quest'ultima il nuovo valore
 
-    #Definisco il massimo della lista
-
-    return giri, massimo      #I giri indicheranno proprio la lunghezza della sequenza 
+    return giri, massimo, somma      #I giri indicheranno proprio la lunghezza della sequenza 
 
 def main ():
     y = float (input("Scrivi un numero: \n"))
-    lunghezza, max = analizza_sequenza (y)
-    print (lunghezza)
-    print (max)
+    lunghezza, max, som = analizza_sequenza (y)    #Definisco tre variabili che prendono i rispettivi return della funzione e poi gli stampo a video
+    print ("La lunghezza della stringa è:", lunghezza)
+    print ("Il numero massimo all'interno della stringa è:", max)
+    print ("La somma di tutti i valori della stringa è:", som)
 main ()
+'''
