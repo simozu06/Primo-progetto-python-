@@ -57,25 +57,51 @@ seguendo questa regola: se il numero è pari, va diviso per 2; se è dispari, va
 per 3 e aggiunto 1. Il processo va ripetuto finchè si arriva a 1 o la lista abbia piu’ di 
 100 numeri
 '''
-
+'''
 def lista (x):
-    numeri = []
-    giri = 0
-    while (x != 1 and giri<100):
+    numeri = []       #Questa riga e la riga 69 sono righe in più che non servono per come viene posto l'esercizio ma le ho utilizzate solo per vedere a video la lista finale per vedere se veniva giusto 
+    giri = 0        #Dichiaro una variabile giri in modo da contare i giri del ciclo per fermarmi una volta arrivati a 100 che ci indica che la lista ha 100 elementi 
+    while (x != 1 and giri<100):       #Entro nel ciclo se il numero è diverso da 1 e se il numero di cicli è minore di 100
         if (x%2 == 0): 
                 x = x / 2 
         else: 
                 x = (3 * x) + 1 
         numeri.append (x)
-        giri = giri + 1 
+        giri = giri + 1      #Aggiorno il numero di giri 
     return numeri 
 
 def main (): 
-    y = float(input("Scrivere un numero: \n"))
+    y = int(input("Scrivere un numero: \n"))
     lista_finale = lista(y)
-    print ("La lista di numeri è:")
+    print ("La lista di numeri è:")    #Anche queste due righe non sono necessarie ma servono solo per vedere la lista finale a video
     print (lista_finale)
 main ()
-    
-        
+'''
+
+'''
+Quarta parte: Scrivete una funzione analizza_sequenza(lista) che riceva la lista generata 
+e restituisca tre valori: il valore massimo raggiunto, la lunghezza della sequenza e la 
+somma di tutti i numeri.
+''' 
+
+Def analizza_sequenza (x):          #Per x intendo la lista che dveo prende in input
+    giri = 0     #Stessa operazione del punto prima per creare la lista
+    numeri [] 
+    massimo = x 
+    z = x      
+    while (z != 1 and giri<100):
+        if (z%2 == 0): 
+                z = x / 2 
+        else: 
+                z = (3 * x) + 1 
+        giri = giri + 1 
+        if (z > x): 
+            massimo = z 
+        else: 
+            massimo = 
+        numeri.append (z)    
+
+    #Definisco il massimo della lista
+
+    return giri      #I giri indicheranno proprio la lunghezza della sequenza 
 
