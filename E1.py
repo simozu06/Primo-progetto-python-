@@ -59,6 +59,7 @@ seguendo questa regola: se il numero è pari, va diviso per 2; se è dispari, va
 per 3 e aggiunto 1. Il processo va ripetuto finchè si arriva a 1 o la lista abbia piu’ di 
 100 numeri
 '''
+#Attenzione: quando metto le parentesi quadre dopo una lista sto definendo una lista vuota 
 '''
 def lista (x):
     numeri = []       #Questa riga e la riga 69 sono righe in più che non servono per come viene posto l'esercizio ma le ho utilizzate solo per vedere a video la lista finale per vedere se veniva giusto 
@@ -112,3 +113,40 @@ def main ():
     print ("La somma di tutti i valori della stringa è:", som)
 main ()
 '''
+
+'''
+Quinta parte: Scrivete una funzione ricerca(lista) che scorra la lista e stampi solo i 
+numeri della sequenza che sono divisibili per 5. Se non ce ne sono, va stampato un 
+messaggio dedicato.
+''' 
+
+def lista (x):
+    numeri = []      
+    giri = 0        
+    while (x != 1 and giri<100): 
+        if (x%2 == 0):     
+                x = x / 2 
+        else: 
+                x = (3 * x) + 1 
+        numeri.append (x)
+        giri = giri + 1      
+    return numeri
+
+def ricerca_lista (y):       #La funzione ha la variabile y ovvero il numero scelto dall'utente
+    Multipli_cinque = []      #Creo una stringa vuota dove metterò i mutipli di 5 
+    sequenza = lista(y)       #Creo una sequenza che contenga tutti i numeri della lista creata tramite la funzione lista 
+    for cifra in sequenza:    #Questo ciclo for mi scorrre tutta la sequenza di numeri della lista e ha come 'variabile' la parola cifra
+        if (cifra%5 == 0): 
+            Multipli_cinque.append (cifra)   #Se la cifra considerata è divisibile per 5 allora aggiungi la cifra alla stringa Multipli di 5 
+    
+
+    return Multipli_cinque
+
+def main(): 
+    z = float (input("Scrivi un numero: \n"))
+    Multipli_5 = ricerca_lista (z)
+    if (Multipli_5 == []):       #Se viene verificata questa condizione vuol dire che all'interno della funzione non sono stati aggiunti valori alla lista vuota 
+        print ("Nella lista creata non ci sono numeri divisibili per 5")
+    else: 
+        print ("I multipli di cinque presenti nella lista sono:", Multipli_5)
+main ()
