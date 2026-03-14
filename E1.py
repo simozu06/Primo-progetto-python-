@@ -71,7 +71,7 @@ def lista (x):
     return numeri 
 
 def main (): 
-    y = int(input("Scrivere un numero: \n"))
+    y = float(input("Scrivere un numero: \n"))
     lista_finale = lista(y)
     print ("La lista di numeri è:")    #Anche queste due righe non sono necessarie ma servono solo per vedere la lista finale a video
     print (lista_finale)
@@ -84,9 +84,9 @@ e restituisca tre valori: il valore massimo raggiunto, la lunghezza della sequen
 somma di tutti i numeri.
 ''' 
 
-Def analizza_sequenza (x):          #Per x intendo la lista che dveo prende in input
+def analizza_sequenza (x):          #Per x intendo la lista che dveo prende in input
     giri = 0     #Stessa operazione del punto prima per creare la lista
-    numeri [] 
+    numeri = [] 
     massimo = x 
     z = x      
     while (z != 1 and giri<100):
@@ -97,11 +97,15 @@ Def analizza_sequenza (x):          #Per x intendo la lista che dveo prende in i
         giri = giri + 1 
         if (z > x): 
             massimo = z 
-        else: 
-            massimo = 
         numeri.append (z)    
 
     #Definisco il massimo della lista
 
-    return giri      #I giri indicheranno proprio la lunghezza della sequenza 
+    return giri, massimo      #I giri indicheranno proprio la lunghezza della sequenza 
 
+def main ():
+    y = float (input("Scrivi un numero: \n"))
+    lunghezza, max = analizza_sequenza (y)
+    print (lunghezza)
+    print (max)
+main ()
