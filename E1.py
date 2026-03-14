@@ -30,7 +30,7 @@ positivo e lo restituisca come risultato della funzione. Se l’utente inserisce
 non valido (es. negativo o zero), il ciclo deve continuare a richiederlo finché l’input 
 non è corretto.
 '''
-
+'''
 def intero_positivo (n): 
     n = 0   #preimposto come valore di n zero in modo da entrare nel ciclo
 
@@ -49,5 +49,33 @@ def main ():
     print (numero)
 
 main ()
+'''
 
+'''
+Terza parte:Scrivete una funzione che usando il numero scelto dall’utente, generi una lista
+seguendo questa regola: se il numero è pari, va diviso per 2; se è dispari, va moltiplicato
+per 3 e aggiunto 1. Il processo va ripetuto finchè si arriva a 1 o la lista abbia piu’ di 
+100 numeri
+'''
+
+def lista (x):
+    numeri = []
+    giri = 0
+    while (x != 1 and giri<100):
+        if (x%2 == 0): 
+                x = x / 2 
+        else: 
+                x = (3 * x) + 1 
+        numeri.append (x)
+        giri = giri + 1 
+    return numeri 
+
+def main (): 
+    y = float(input("Scrivere un numero: \n"))
+    lista_finale = lista(y)
+    print ("La lista di numeri è:")
+    print (lista_finale)
+main ()
+    
+        
 
