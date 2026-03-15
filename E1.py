@@ -1,152 +1,181 @@
-#Esercizio 1, Simone Zuppa 
-
 '''
-Prima parte: scrivete una funzione di controllo, is_pari(n), che accetti come parametro 
-un numero intero e restituisca True se il numero è pari, False altrimenti.
-'''
-'''
-def is_pari (n): 
-    risultato = False  #Preimposto il valore della variabile risultato a False e la faccio poi variare di conseguenza 
-
-    if (n%2 == 0):   #Se il resto della divisine tra n è due è zero (numero pari)
-        risultato = True 
-
-    return risultato 
-
-def main ():   #definisco la funzione main che indica l'inizio del vero e proprio programma 
-
-    numero = int (input ("Scrivere un numero per verificare se è pari o dispari: \n"))
-
-    result = is_pari(numero)   #Definisco una variabile result alla quale assegno il risultato della funzione is_pari con il valore scelto dall'utente
-
-    print (result)
-
-main()
+File: E1.py
+Author: Simone Zuppa
+Date: 2026/03/15
+Version: 1.0
+Description: Analisi di una lista di numeri secondo la congettura di Collatz
 '''
 
-'''
-Seconda parte: Create una funzione di generazione che chieda all’utente un numero intero 
-positivo e lo restituisca come risultato della funzione. Se l’utente inserisce un numero 
-non valido (es. negativo o zero), il ciclo deve continuare a richiederlo finché l’input 
-non è corretto.
-'''
-#Problema da risolvere: sulla variabile se metti una stringa o comunque non un numero non sai se devi risolvere sta roba
+# 1) FUNZIONE is_pari
+# Controlla se un numero è pari.
+# Restituisce True se il resto della divisione per 2 è 0,
+# altrimenti restituisce False.
 
-'''
-def intero_positivo (n): 
-    n = 0   #preimposto come valore di n zero in modo da entrare nel ciclo
 
-    while (n <= 0 or n%1 != 0):   #Creo un ciclo che chieda un numero intero positivo. Entreremo nel ciclo solo se almeno una condizione è vere perciò se il numero è negativo o nullo o se il resto della divisione tra il numero è uno è diverso da 0
-        n = float (input("Dammi un numero intero positivo: \n"))   #Metto float perchè se no quando inserisco un numero decimale darà errore, la stessa cosa se inserisco una stringa ma non so come risolvere l'errore
+def is_pari(n):
+#l'espressione n%2 == 0 restituisce già un valore booleano, quindi si può gia ritornare il valore senza passare per l'if
+    return n % 2 == 0      
 
-    return n 
 
-def main (): 
+# 2) FUNZIONE intero_positivo
+# Chiede all'utente di inserire un numero intero positivo.
+# Se il numero inserito è:
+# - negativo
+# - uguale a zero
+# - non intero (es. 3.5)
+# il programma continua a chiedere un nuovo input.
+# La funzione termina solo quando il valore è corretto.
 
-    intero = None    #Definisco una variabile senza valore chiamata intero 
+def intero_positivo():
 
-    numero = intero_positivo (intero)
+    # primo input dell'utente
+    n = float(input("Dammi un numero intero positivo: \n"))
 
-    print ("Il numero da te scelto è...")
-    print (numero)
+    # il ciclo continua finché:
+    # - n è minore o uguale a 0
+    # - oppure n non è intero (resto della divisione per 1 diverso da 0)
+    while (n <= 0 or n % 1 != 0):
 
-main ()
-'''
+        # nuovo tentativo dell'utente
+        n = float(input("Non è un numero intero positivo, riprova: \n"))
 
-'''
-Terza parte:Scrivete una funzione che usando il numero scelto dall’utente, generi una lista
-seguendo questa regola: se il numero è pari, va diviso per 2; se è dispari, va moltiplicato
-per 3 e aggiunto 1. Il processo va ripetuto finchè si arriva a 1 o la lista abbia piu’ di 
-100 numeri
-'''
-#Attenzione: quando metto le parentesi quadre dopo una lista sto definendo una lista vuota 
-'''
-def lista (x):
-    numeri = []       #Questa riga e la riga 69 sono righe in più che non servono per come viene posto l'esercizio ma le ho utilizzate solo per vedere a video la lista finale per vedere se veniva giusto 
-    giri = 0        #Dichiaro una variabile giri in modo da contare i giri del ciclo per fermarmi una volta arrivati a 100 che ci indica che la lista ha 100 elementi 
-    while (x != 1 and giri<100):       #Entro nel ciclo se il numero è diverso da 1 e se il numero di cicli è minore di 100
-        if (x%2 == 0): 
-                x = x / 2 
-        else: 
-                x = (3 * x) + 1 
-        numeri.append (x)
-        giri = giri + 1      #Aggiorno il numero di giri 
-    return numeri 
+    # restituisco il valore convertito in intero
+    return int(n)
 
-def main (): 
-    y = float(input("Scrivere un numero: \n"))
-    lista_finale = lista(y)
-    print ("La lista di numeri è:")    #Anche queste due righe non sono necessarie ma servono solo per vedere la lista finale a video
-    print (lista_finale)
-main ()
-'''
 
-'''
-Quarta parte: Scrivete una funzione analizza_sequenza(lista) che riceva la lista generata 
-e restituisca tre valori: il valore massimo raggiunto, la lunghezza della sequenza e la 
-somma di tutti i numeri.
-''' 
-'''
-def analizza_sequenza (x):          #Per x intendo la lista che devo prendere in input
-    giri = 0       #Inizializzo il numero di giri a 0 e ad ogni giro del ciclo aumento questo numeor di 1 (andrà poi a ad indicare la lunghezza della stringa finale)
-    numeri = [] 
-    massimo = x     #Dichiaro una variabile che si chiama massimo e la inizializzo al valore x
-    somma = x       #Inizializzo una variabile somma al valore di x e la aggiorno ad ogni giro 
-    while (x != 1 and giri<100):     #Faccio lo stesso ciclo di prima con l'if...else per costruire la stringa come da richiesta
-        if (x%2 == 0): 
-            x = x / 2 
-        else: 
-            x = (3 * x) + 1
-        if (x > massimo):     #Questo if serve per controllare se il nuovo valore è maggiore di quello vecchio e in caso affermativo ridefinire il massimo
-            massimo = x  
-        giri = giri + 1 
-        numeri.append (x)
-        somma = somma + x     #Aggiorno la variabile somma aggiungendo a quest'ultima il nuovo valore
+# 3) FUNZIONE lista
+# Genera la sequenza secondo la congettura di Collatz:
+#
+# se il numero è pari -> n = n / 2
+# se il numero è dispari -> n = 3*n + 1
+#
+# Il processo continua finché:
+# - il numero diventa 1
+# oppure
+# - la lista supera i 100 elementi
 
-    return giri, massimo, somma      #I giri indicheranno proprio la lunghezza della sequenza 
+def lista(n):
 
-def main ():
-    y = float (input("Scrivi un numero: \n"))
-    lunghezza, max, som = analizza_sequenza (y)    #Definisco tre variabili che prendono i rispettivi return della funzione e poi gli stampo a video
-    print ("La lunghezza della stringa è:", lunghezza)
-    print ("Il numero massimo all'interno della stringa è:", max)
-    print ("La somma di tutti i valori della stringa è:", som)
-main ()
-'''
+    # creo una lista vuota che conterrà la sequenza generata
+    sequenza = []
 
-'''
-Quinta parte: Scrivete una funzione ricerca(lista) che scorra la lista e stampi solo i 
-numeri della sequenza che sono divisibili per 5. Se non ce ne sono, va stampato un 
-messaggio dedicato.
-''' 
+    # il ciclo continua finché:
+    # - n è diverso da 1
+    # - la lunghezza della lista è minore di 100, per vedere ciò uso la funzione len
+    while (n != 1 and len(sequenza) < 100):
 
-def lista (x):
-    numeri = []      
-    giri = 0        
-    while (x != 1 and giri<100): 
-        if (x%2 == 0):     
-                x = x / 2 
-        else: 
-                x = (3 * x) + 1 
-        numeri.append (x)
-        giri = giri + 1      
-    return numeri
+        # controllo se il numero è pari
+        if is_pari(n):
+            n = n // 2
 
-def ricerca_lista (y):       #La funzione ha la variabile y ovvero il numero scelto dall'utente
-    Multipli_cinque = []      #Creo una stringa vuota dove metterò i mutipli di 5 
-    sequenza = lista(y)       #Creo una sequenza che contenga tutti i numeri della lista creata tramite la funzione lista 
-    for cifra in sequenza:    #Questo ciclo for mi scorrre tutta la sequenza di numeri della lista e ha come 'variabile' la parola cifra
-        if (cifra%5 == 0): 
-            Multipli_cinque.append (cifra)   #Se la cifra considerata è divisibile per 5 allora aggiungi la cifra alla stringa Multipli di 5 
-    
+        # se non è pari allora è dispari
+        else:
+            n = (3 * n) + 1
+
+        # aggiungo il nuovo valore alla lista
+        sequenza.append (n)
+
+    # restituisco la sequenza generata
+    return sequenza
+
+
+# 4) FUNZIONE analizza_sequenza
+# Riceve in input una lista e calcola:
+# - valore massimo
+# - lunghezza della lista
+# - somma di tutti i valori
+# Restituisce questi tre risultati.
+
+def analizza_sequenza(sequenza):
+
+    # valore massimo presente nella lista tramite la funzione max che analizza il massimo valore nella stringa
+    massimo = max(sequenza)
+
+    # numero totale di elementi della lista tramite la funzione len
+    lunghezza = len(sequenza)
+
+    # somma di tutti i numeri della lista tramite la funzione somm
+    somma = sum(sequenza)
+    return lunghezza, massimo, somma
+
+
+# 5) FUNZIONE ricerca_lista
+# Genera la sequenza di Collatz e cerca al suo interno
+# tutti i numeri divisibili per 5.
+#
+# Se trova multipli di 5 li salva in una lista.
+# Alla fine restituisce la lista dei multipli trovati.
+
+#La funzione prende come variabile la sequenza di Collatz generata dalla funzione precedente
+def ricerca_lista(sequenza):
+
+    # lista che conterrà i multipli di 5
+    Multipli_cinque = []
+
+    # scorro tutti gli elementi della sequenza
+    for n in sequenza:
+
+        # controllo se il numero è divisibile per 5
+        if (n % 5 == 0):
+
+            # se lo è, lo aggiungo alla lista dei multipli
+            Multipli_cinque.append(n)
 
     return Multipli_cinque
 
-def main(): 
-    z = float (input("Scrivi un numero: \n"))
-    Multipli_5 = ricerca_lista (z)
-    if (Multipli_5 == []):       #Se viene verificata questa condizione vuol dire che all'interno della funzione non sono stati aggiunti valori alla lista vuota 
-        print ("Nella lista creata non ci sono numeri divisibili per 5")
-    else: 
-        print ("I multipli di cinque presenti nella lista sono:", Multipli_5)
-main ()
+
+# FUNZIONE PRINCIPALE main
+# Gestisce il flusso principale del programma:
+#
+# 1) chiede quanti numeri analizzare
+# 2) salva i numeri inseriti dall'utente
+# 3) per ogni numero genera la sequenza di Collatz
+# 4) analizza la sequenza
+# 5) cerca eventuali multipli di 5
+
+def main():
+
+    # chiedo quanti numeri l'utente vuole analizzare
+    x = int(input("Di quanti numeri vuoi analizzare la lista: \n"))
+
+    # lista che conterrà tutti i numeri inseriti
+    numeri = []
+
+    # ciclo che richiede all'utente x numeri
+    for i in range(x):
+
+        # richiamo la funzione che garantisce un intero positivo
+        z = intero_positivo()
+
+        # aggiungo il numero alla lista
+        numeri.append(z)
+
+    # analizzo ogni numero della lista
+    for n in numeri:
+
+        print("Analisi del numero:", n)
+
+        # genero la sequenza di Collatz
+        sequenza = lista(n)
+
+        # analizzo la sequenza
+        lunghezza, massimo, somma = analizza_sequenza(sequenza)
+
+        print("La sequenza è:", sequenza)
+        print("La lunghezza della sequenza è:", lunghezza)
+        print("Il numero massimo della sequenza è:", massimo)
+        print("La somma dei valori della sequenza è:", somma)
+
+        # cerco i multipli di 5 nella sequenza
+        multipli_5 = ricerca_lista(sequenza)
+
+        # controllo se ne esistono
+        if multipli_5 == []:
+            print("Nella lista non ci sono numeri divisibili per 5")
+
+        else:
+            print("I multipli di 5 nella sequenza sono:", multipli_5)
+
+
+# avvio del programma
+main()
