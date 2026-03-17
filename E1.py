@@ -6,6 +6,8 @@ Version: 1.0
 Description: Analisi di una lista di numeri secondo la congettura di Collatz
 '''
 
+#Domande da fare a riga 33 e 34 e in più il programmma deve contenere meno righe di codice possibile (Fai l'esempio della lunghezza della lista)
+
 # 1) FUNZIONE is_pari
 # Controlla se un numero è pari.
 # Restituisce True se il resto della divisione per 2 è 0,
@@ -28,7 +30,9 @@ def is_pari(n):
 
 def intero_positivo():
 
-    # primo input dell'utente
+    #!!!!!!!!!!Se io inserisco un numero come 4.000000000000000000000000000000000000000000001 lo considera come 4 quindi non mi chiede di inserire un altro numero, è un errore che devo risolvere?
+    #!!!!!!!!!!primo input dell'utente (Qua se metto float mi da errore esattamente come quando al posto di inserire un numero inserisco una stringa)
+
     n = float(input("Dammi un numero intero positivo: \n"))
 
     # il ciclo continua finché:
