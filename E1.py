@@ -61,7 +61,7 @@ def intero_positivo():
 def lista(n):
 
     # creo una lista vuota che conterrà la sequenza generata
-    sequenza = []
+    sequenza = [1]
 
     # il ciclo continua finché:
     # - n è diverso da 1
@@ -90,6 +90,8 @@ def lista(n):
 # - somma di tutti i valori
 # Restituisce questi tre risultati.
 
+#Attenzione: la funzione non può ritornare 3 valori devi fare una lista che contenga i tre valori e poi riprenderla nella main
+
 def analizza_sequenza(sequenza):
 
     # valore massimo presente nella lista tramite la funzione max che analizza il massimo valore nella stringa
@@ -100,7 +102,9 @@ def analizza_sequenza(sequenza):
 
     # somma di tutti i numeri della lista tramite la funzione somm
     somma = sum(sequenza)
-    return lunghezza, massimo, somma
+
+    lista_sequenza = (lunghezza, massimo, somma)
+    return lista_sequenza
 
 
 # 5) FUNZIONE ricerca_lista
@@ -161,14 +165,16 @@ def main():
 
         # genero la sequenza di Collatz
         sequenza = lista(n)
+        
+        print(sequenza)
 
         # analizzo la sequenza
-        lunghezza, massimo, somma = analizza_sequenza(sequenza)
+        l, m, s = analizza_sequenza(sequenza)      # l = lunghezza, m = massimo e s = somma solo che avevo già usato tutti questi nomi dentro la funzione
 
         print("La sequenza è:", sequenza)
-        print("La lunghezza della sequenza è:", lunghezza)
-        print("Il numero massimo della sequenza è:", massimo)
-        print("La somma dei valori della sequenza è:", somma)
+        print("La lunghezza della sequenza è:", l)
+        print("Il numero massimo della sequenza è:", m)
+        print("La somma dei valori della sequenza è:", s)
 
         # cerco i multipli di 5 nella sequenza
         multipli_5 = ricerca_lista(sequenza)
