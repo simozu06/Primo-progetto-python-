@@ -60,8 +60,13 @@ def intero_positivo():
 
 def lista(n):
 
-    # creo una lista vuota che conterrà la sequenza generata
-    sequenza = [1]
+    # creo una lista. Questa lista se il numero è 1 la inizializzo a 1 e se è il numero è diverso da 1 la faccio vuota. Questo perchè 
+    # se è 1 e non la inizializzo a 1 non entreremo mai nel ciclo, perciò la sequenza sarà vuota, se invece è diverso da 1 e la inizializzo a 
+    # 1, nella maggior parte dei casi ci saranno due 1 nella sequenza
+    if n == 1: 
+        sequenza = [1]
+    else: 
+        sequenza = []
 
     # il ciclo continua finché:
     # - n è diverso da 1
