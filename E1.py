@@ -109,7 +109,7 @@ def analizza_sequenza(sequenza):
     somma = sum(sequenza)
 
     lista_sequenza = (lunghezza, massimo, somma)
-    return lista_sequenza
+    return lista_sequenza          #Una funzione può ritornare solo un valore per questo definisco una lista che contengà tutti i tre risultati che produce la funzione. Poi nella main ciascuno di questi risultati corrisponderà a una variabile 
 
 
 # 5) FUNZIONE ricerca_lista
