@@ -6,7 +6,6 @@ Version: 1.0
 Description: Analisi di una lista di numeri secondo la congettura di Collatz
 '''
 
-#Domande da fare a riga 33 e 34 e in più il programmma deve contenere meno righe di codice possibile (Fai l'esempio della lunghezza della lista)
 
 # 1) FUNZIONE is_pari
 # Controlla se un numero è pari.
@@ -14,8 +13,10 @@ Description: Analisi di una lista di numeri secondo la congettura di Collatz
 # altrimenti restituisce False.
 
 
-def is_pari(n):
-#l'espressione n%2 == 0 restituisce già un valore booleano, quindi si può gia ritornare il valore senza passare per l'if
+#definisco una funzione che prendo come parametro il numero n da controllare
+
+def is_pari(n): 
+#l'espressione n%2 == 0 restituisce già un valore booleano, True se il resto della divisione tra n e 2 è zero (ovvero n è pari)
     return n % 2 == 0      
 
 
@@ -30,20 +31,18 @@ def is_pari(n):
 
 def intero_positivo():
 
-    #!!!!!!!!!!Se io inserisco un numero come 4.000000000000000000000000000000000000000000001 lo considera come 4 quindi non mi chiede di inserire un altro numero, è un errore che devo risolvere?
-    #!!!!!!!!!!primo input dell'utente (Qua se metto float mi da errore esattamente come quando al posto di inserire un numero inserisco una stringa)
-
     n = float(input("Dammi un numero intero positivo: \n"))
 
     # il ciclo continua finché:
     # - n è minore o uguale a 0
     # - oppure n non è intero (resto della divisione per 1 diverso da 0)
+
     while (n <= 0 or n % 1 != 0):
 
         # nuovo tentativo dell'utente
         n = float(input("Non è un numero intero positivo, riprova: \n"))
 
-    # restituisco il valore convertito in intero
+    # restituisco il valore convertito in intero facendo un casting 
     return int(n)
 
 
@@ -61,8 +60,9 @@ def intero_positivo():
 def lista(n):
 
     # creo una lista. Questa lista se il numero è 1 la inizializzo a 1 e se è il numero è diverso da 1 la faccio vuota. Questo perchè 
-    # se è 1 e non la inizializzo a 1 non entreremo mai nel ciclo, perciò la sequenza sarà vuota, se invece è diverso da 1 e la inizializzo a 
+    # se è 1 e non la inizializzo a 1, perciò è vuota, non entreremo mai nel ciclo, perciò la sequenza rimarrà vuota, se invece è diverso da 1 e la inizializzo a 
     # 1, nella maggior parte dei casi ci saranno due 1 nella sequenza
+
     if n == 1: 
         sequenza = [1]
     else: 
@@ -95,7 +95,7 @@ def lista(n):
 # - somma di tutti i valori
 # Restituisce questi tre risultati.
 
-#Attenzione: la funzione non può ritornare 3 valori devi fare una lista che contenga i tre valori e poi riprenderla nella main
+#Attenzione: la funzione non può ritornare 3 valori (perchè una funzione può ritornare massimo un valore) devi fare una lista che contenga i tre valori e poi riprenderla nella main
 
 def analizza_sequenza(sequenza):
 
@@ -119,7 +119,7 @@ def analizza_sequenza(sequenza):
 # Se trova multipli di 5 li salva in una lista.
 # Alla fine restituisce la lista dei multipli trovati.
 
-#La funzione prende come variabile la sequenza di Collatz generata dalla funzione precedente
+#La funzione prende come variabile la sequenza di Collatz generata dalla terza funzione 
 def ricerca_lista(sequenza):
 
     # lista che conterrà i multipli di 5
@@ -154,16 +154,16 @@ def main():
     # lista che conterrà tutti i numeri inseriti
     numeri = []
 
-    # ciclo che richiede all'utente x numeri
+    # ciclo che richiede all'utente x numeri, facendo scorrere un contatore da 0 a x-1 e li inserisce nella listachiamta numeri 
     for i in range(x):
 
-        # richiamo la funzione che garantisce un intero positivo
+        # richiamo la funzione che garantisce che il numero chiesto sia un intero positivo
         z = intero_positivo()
 
         # aggiungo il numero alla lista
         numeri.append(z)
 
-    # analizzo ogni numero della lista
+    # analizzo ogni numero dato dall'utente della lista numeri 
     for n in numeri:
 
         print("Analisi del numero:", n)
