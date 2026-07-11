@@ -255,3 +255,81 @@ if len(lista_parole_comuni) > 0:
 # Altrimenti (la lista è vuota)
 else:
     print("Non ci sono parole comuni in tutte le strofe.")
+
+
+#Decimo punto: Create la lista univoca di tutte le parole che compaiono nel testo, ordinatela per lunghezza delle parole e visualizzatela
+
+#L'idea è partire dalla lista di parole del testo già precedentemente creata con il metodo .split
+#A questo punto creo un set dove i suoi elementi sono le parole del testo, quindi lo creo a partire 
+#dalla lista. Questo lo faccio in modo che elementi duplicati non compaiono due volte perchè il 
+#set accetta solo elementi unici, quindi, i doppioni vengono eliminati automaticamente.
+
+parole_uniche = set(lista_parole)
+
+#Riconverto il set in una lista (solo che adesso i duplicati ci saranno solo una volta). Ciò
+#lo faccio per i set non supportano i metodi di ordinamento perchè non hanno un ordine negli elementi 
+
+lista_univoca = list(parole_uniche)
+
+#Uso il metodo .sort che ordina gli elementi in questo caso di una lista avendo come key, ovvero, 
+#la regola con cui ordinarli, la lunghezza dell'elemento, ovvero della parola
+lista_univoca.sort(key=len)
+
+print("La lista univoca ordinata per lunghezza è:")
+print(lista_univoca)
+
+#Undicesima punto: Create un dizionario che mappi OGNI carattere (chiave) con la sua occorrenza nel testo (valore) e visualizzatelo
+
+# Inizializzo un dizionario vuoto usando le parentesi graffe. Questo contenitore ospiterà 
+#i caratteri come chiavi e le frequenze/occorenze come valori.
+occorrenze_caratteri = {}
+
+# Scorro l'intera stringa del testo carattere per carattere (Nota: tutti i caratteri vengono visitati)
+for char in testo:
+    
+    #Controllo se il carattere corrente è già presente tra le chiavi del dizionario, usando il 
+    #metodo .keys() che ci fornisce l'elenco di tutte le chiavi inserite fino ad ora.
+    if char in occorrenze_caratteri.keys():
+        
+        #Se il carattere è già una chiave, significa che lo avevamo già contato. Accedo al
+        #suo valore attuale tramite le quadre e lo incremento di 1.
+        occorrenze_caratteri[char] = occorrenze_caratteri[char] + 1
+        
+    else:
+        #Se il carattere non è presente nelle chiavi, è la prima volta che lo incontriamo.
+        #Creo una nuova coppia nel dizionario assegnando a questa nuova chiave il valore 1.
+        occorrenze_caratteri[char] = 1
+
+print("Mappa di tutte le occorrenze dei caratteri:")
+print(occorrenze_caratteri)
+
+#Dodicesimo punto: Create un dizionario come il precedente per i soli caratteri alfanumerici (no caratteri speciali), ignorando maiuscole e minuscole
+
+#Partiamo dal dizionario creato al punto 11 (che contiene tutto, anche la punteggiatura)
+#Inizialmente, inizializzo il nuovo dizionario pulito
+occorrenze_alfanumerici = {}
+
+#A questo punto scorro le COPPIE chiave-valore del dizionario vecchio usando il metodo .items()
+#Questo metodo restituisce le coppie chiave-valore
+for chiave, valore in occorrenze_caratteri.items():
+    
+    #FILTRO: Se la chiave è una lettera o un numero allora trasformo la chiave in minuscolo
+    if chiave in alfanumerici:
+        
+        #Uso il metodo .lower() che trasforma i caratteri alfabetici, parliamo di stringhe, 
+        #in minuscolo e non cambia i numeri 
+        chiave_min = chiave.lower()
+        
+        #Cosa serve l'if..else? l'else crea la coppia nel dizionario la prima volta in assoluto che incontriamo una lettera,
+        #mentre l'if scatta per sommare i valori solo quando troviamo la sua versione alternativa 
+        #(maiuscola o minuscola) e dobbiamo fondere i due conteggi parziali sotto l'unica chiave minuscola
+        #sommando le occorenze della lettera minuscola/maiuscola al valore della chiave nel primo dizionario
+        #che avrà la lettera maiuscola/minuscola, nell'altra versione
+
+        if chiave_min in occorrenze_alfanumerici.keys():
+            occorrenze_alfanumerici[chiave_min] = occorrenze_alfanumerici[chiave_min] + valore
+        # Se non c'è, creo la chiave e le assegno il valore
+        else:
+            occorrenze_alfanumerici[chiave_min] = valore
+print("Mappa delle occorenze dei soli caratteri")
+print(occorrenze_alfanumerici)
