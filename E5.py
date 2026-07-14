@@ -90,3 +90,34 @@ def risolvi_punti_1_a_4(N=8):         #La funzione è fatta su N che di default 
         if rip > 0:
             print(f"La soluzione {sol} è stata generata casualmente altre {rip} volte.")
 
+#Passiamo adesso alla risoluzione dei punti 5 e 6
+def risolvi_punti_5_e_6():
+    generatore = random.Random()   ##Creiamo l'oggetto generatore del modulo random che ci servirà per generare una soluzione possibile 
+    
+    N = 8   #Partiamo dalla classsica scacchiera 8x8 e poi la facciamo crescere
+    while True:      #Facciamo partire un while infinito che si fermerà solo con il comando break
+        scacchiera = list(range(N))     #Creiamo una lista di N elementi vuota 
+        start_time = time.time()    #Facciamo partire il cronometro che ci servirà per il punto 6
+        soluzione_trovata = False    #Definiamo una bandiera che ci servirà successivamente 
+        
+        print(f"Cerco 1 soluzione per scacchiera {N}x{N}...")
+        
+        # Continua a cercare finché non passano 15 secondi 
+        while (time.time() - start_time) < 15:
+            generatore.shuffle(scacchiera)   #Mescola casualmente la lista NxN
+            if soluzione_ok(scacchiera):   #Se la permutazione della scacchiera va bene 
+                soluzione_trovata = True   #abbiamo trovato una soluzione valida in un certo tempo che viene calcolato dopo
+                tempo_impiegato = time.time() - start_time
+                print(f"   Soluzione trovata in {tempo_impiegato} secondi!")
+                break   #Se abbiamo trovato una soluzione in meno di 15 secondi allora possiamo concludere questo while perchè non ci interessa trovarne un'altra per questa dimensione 
+                
+        if soluzione_trovata:     #Se per la scacchiera NxN abbiamo trovato una soluzione in meno di 15 secondi (la bandiera è alzata, a valore true) passiamo alla dimensione superiore 
+            N += 1 # Passa alla scacchiera più grande
+        else:   #Se invece soluzione_trovata = false allora vuol dire che per questo N non abbiamo trovato una soluzione in meno di 15 secondi 
+            #Se non l'abbiamo trovato allora lo diciamo a video e diciamo a video qual è la dimensione massima su cui
+            #siamo riusciti a trovare una soluzione in meno di 15 secondi, ovvero quella prima di N 
+            print(f"   Nessuna soluzione trovata in meno di 15s per N={N}.")
+            print(f"-> Il lato N più grande risolvibile in < 15s è N={N-1}.")
+            break   #finiamo il while esternop perchè abbiamo risolto il punto 6 trovando la dimensione massima 
+
+#Passiamo alla soluzione dell'ultimo punto, ovvero il punto 7
