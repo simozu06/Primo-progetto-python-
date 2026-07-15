@@ -61,8 +61,13 @@ def risolvi_punti_1_a_4(N=8):         #La funzione è fatta su N che di default 
         generatore.shuffle(scacchiera)     #Usando il metodo .shuffle facciamo una permutazione casuale della lista chiamata scacchiera 
         
         if soluzione_ok(scacchiera):           #Se la permutazione è una soluzione allora entriamo nel if 
-            tupla_sol = tuple(scacchiera)       # Casting a tupla per poterla usare nei dizionari/liste essendo non modificabili
-            
+            tupla_sol = tuple(scacchiera)       # Casting da lista a tupla necessario per due motivi:
+                                                # 1. HASHING: Il dizionario delle ripetizioni (Punto 4) richiede chiavi immutabili. 
+                                                #    Le liste (mutabili) genererebbero un TypeError, le tuple funzionano perfettamente.
+                                                # 2. PASSAGGIO PER RIFERIMENTO: Metodi come .append() salvano un riferimento 
+                                                #    all'oggetto, non il suo valore. Modificando la lista originale (es. con shuffle), 
+                                                #    la modifica si ripercuoterebbe su tutte le soluzioni già salvate. Il casting 
+                                                #    a tupla crea un nuovo oggetto immutabile, slegato dalla lista originale.
             # Punto 3: Verifica se la soluzione è unica
             if tupla_sol not in soluzioni_uniche:       #Se la tupla trovata è unica (non è tra le soluzioni già trovate)
                 tempo_impiegato = time.time() - start_time      #Calcoliamo i secondi impegati a trovare questa soluzione sottraendo il tempo attuale al tempo d'inizio 
@@ -88,7 +93,7 @@ def risolvi_punti_1_a_4(N=8):         #La funzione è fatta su N che di default 
     print("-> Ripetizioni trovate per le soluzioni:")
     for sol, rip in dizionario_ripetizioni.items():
         if rip > 0:
-            print(f"La soluzione {sol} è stata generata casualmente altre {rip} volte.")
+            print(f"La soluzione {sol} è stata generata casualmente {rip+1} volte.")
 
 #Passiamo adesso alla risoluzione dei punti 5 e 6
 def risolvi_punti_5_e_6():
@@ -120,4 +125,68 @@ def risolvi_punti_5_e_6():
             print(f"-> Il lato N più grande risolvibile in < 15s è N={N-1}.")
             break   #finiamo il while esternop perchè abbiamo risolto il punto 6 trovando la dimensione massima 
 
-#Passiamo alla soluzione dell'ultimo punto, ovvero il punto 7
+
+#Passiamo alla soluzione dell'ultimo punto, ovvero il punto 7: 
+#Ogni soluzione è ‘simmetrica’ per rotazioni della scacchiera 8x8 di 90, 180 e 270 gradi. 
+#Scrivete delle funzioni che, una volta trovata una soluzione alla scacchiera, costruiscano le 4 
+#soluzioni simmetriche per rotazione. Trovate 5 soluzioni “uniche” e le rispettive soluzioni 
+#simmetriche per rotazione per una scacchiera 8x8
+
+#Definiamo prima di tutto una funzione che presa la scacchiera la ruota di 90 gradi. In input questa
+#funzione prende la combinazione da ruotare di 90 gradi e la dimensione della scacchiera 
+def ruota_90_gradi(posizioni, N):
+    nuova_pos = [0] * N      #Creiamo una lista con tutti 0 di dimensione N dove andremo a posizionare le regine una volta ruotata la scacchiera 
+    for r in range(N):      #A questo punto scorriamo la lista che indica le vecchie posizioni delle regine e calcoliamo le nuove (chiaramente non serve scorrere tutta la scacchiera, 64 posizioni, perchè considerando la lista eliminiamo tutti gli 0 e consideriamo solo le posizioni delle regine)
+        c = posizioni[r]    #Così facendo so che la regina si troverà in coordinate (r, posizioni[r]) ovvero (r, c)
+        #Come trovare la nuova posizione della regina una volta ruotata la scacchiera di 90 gradi (rotazione di una matrice di 90 gradi): 
+        #Nuova riga = vecchia colonna 
+        #Nuova colonna = si ottiene partendo dall'estremità destra della scacchiera (N - 1) e sottraendovi la vecchia coordinata "riga"
+        nuovo_r = c
+        nuovo_c = N - 1 - r
+        nuova_pos[nuovo_r] = nuovo_c    #Riempiamo la nuova lista con le nuovew posizioni delle regine a seguito della rotazione 
+    return tuple(nuova_pos)    #Ritorniamo la lista come tupla perchè in seguito dovremo verificarne l'unicità e questa cosa non si può fare con le liste in quanto modificabili
+
+def risolvi_punto_7(N=8):
+    generatore = random.Random()
+    scacchiera = list(range(N))    #Di nuovo andiamo a definire il generatore e la scacchiera (come lista) di dimensione N per generare una qualsiasi combinazione di regine 
+    soluzioni_uniche_trovate = 0     #Contatore per trovare le 5 soluzioni uniche 
+    famiglie_soluzioni = []    #Lista dove per ciascuna soluzione salveremo la soluzione con le sue 3 rotazioniin modo poi da controllare ogni volta se trovata una nuova soluzione questa non è uguale alle vecchie + le loro rotazioni. Chiameremo la sol + le 3 rotazioni una famiglia che è formata da 4 liste
+    
+    while soluzioni_uniche_trovate < 5:     #Continuiamo a girare fino a che non troviamo 5 famiglie di soluzioni (la soluzione + le rotazioni) uniche
+        generatore.shuffle(scacchiera)    #Creiamo una permutazione casuale della scacchiera 8x8
+        if soluzione_ok(scacchiera):     #Verifichiamo se la soluzione va bene con il controllo sulle diagonali fatto con la solita funzione
+            tupla_sol = tuple(scacchiera)     #Convertiamo la scacchiera valida da lista a tupla per verificarne l'unictà.
+            
+            # Controlla che non faccia parte di una famiglia (base + rotazioni) già trovata
+            is_nuova = True   #Supponiamo che la soluzione sia nuova (quidni non rientri nelle famiglie di soluzioni)
+            for famiglia in famiglie_soluzioni:     #Iniziamo a scorrere le varie famiglie già archiviate in famiglie_soluzioni
+                if tupla_sol in famiglia:    #Controlliamo se la tupla trovata rientra in una di tutte le possibili configurazioni già salvate 
+                    is_nuova = False   #Se è cosi allora abbassiamo la bandiera e chiudiamo il for per controllare l'unicità della soluzione 
+                    break
+                    
+            if is_nuova:   #Se a seguito del controllo la bandiera è ancora alzata allora la soluzione trovata nopn rientra in una di tutte le possibili configurazioni 
+                soluzioni_uniche_trovate += 1           #Aumentiamo il contatore delle soluzioni trovate 
+                rot_90 = ruota_90_gradi(tupla_sol, N)   #Facciamo ruotare la scacchiera tupla_sol prima di 90, poi di nuovo di 90 (quindi 180) e infine di nuovo di 90 (quindi di 270)
+                rot_180 = ruota_90_gradi(rot_90, N)
+                rot_270 = ruota_90_gradi(rot_180, N)
+                
+                # Salviamo l'intera famiglia nella lista dedicata alle famiglie 
+                famiglie_soluzioni.append((tupla_sol, rot_90, rot_180, rot_270))
+                
+                #Stampiamo a vidoe che abbiamo trovato la i-esima famgilia di 5 e poi stampiamo la soluzione trovata e le rispettive rotazioni 
+                print(f"\nFamiglia {soluzioni_uniche_trovate}:")
+                print(f"  Base (0°):   {tupla_sol}")
+                print(f"  Ruotata 90°: {rot_90}")
+                print(f"  Ruotata 180°:{rot_180}")
+                print(f"  Ruotata 270°:{rot_270}")
+
+
+#Chiamiamo tutte le funzioni una a una 
+print(f" Soluzioni punti 1,2,3,4:")
+risolvi_punti_1_a_4()
+print("\n=========================================\n")    #Separatore tra le due funzioni 
+print(f" Soluzioni punti 5,6:")
+risolvi_punti_5_e_6()
+print("\n=========================================\n")    #Separatore tra le due funzioni 
+print(f" Soluzioni punto 7:")
+risolvi_punto_7()
