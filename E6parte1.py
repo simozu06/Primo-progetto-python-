@@ -1,5 +1,7 @@
 #Nota generale) A cosa serve encoding="utf-8"? encoding="utf-8" serve a leggere e scrivere correttamente i caratteri speciali (come le lettere accentate) all'interno di un file.
 #Nota generale 2) Istanza e oggetto della classe con la stessa cosa e rappresentano la singola rappresentazione 
+#Nota generale 3) Ci potrebbero essere problemi legate alle lettere accentate perchè di default python usa ASCII standard che non ha le lettere accentate quindi le sostituisce a una serie di caratteri. 
+#Per risolvere questo problema si dovrebbe passare a UNICODE utf-8 oppure a ASCII esteso
 
 import json     #Serve per leggere e scrivere file JSON e più avanti nell'esercizio ci servirà fare ciò
 

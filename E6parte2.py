@@ -2,6 +2,9 @@
 #tastiera. A seconda del comando inserito (APRI, AGGIUNGI, SALVA, ecc.), fa da "ponte": chiede all'utente 
 #le informazioni necessarie e poi passa questi dati ai metodi della classe Rubrica per eseguire 
 #materialmente il lavoro.
+#Nota generale) se quando usi il terminale non funziona qualcosa molto probabilmente è un problema legato agli spazi
+#Stai attento quando nel terminale scrivi le robe, non devi inserire spazi dopo o prima delle parole, devi direttamente scrivere. Una
+#soluzione a questo potrebbe essere mettere .split() che serve appunto a eliminare gli spazi bianchi 
 
 from E6parte1 import Rubrica        #Cerca un file chiamato E6parte1.py nella stessa cartella e importa la classe Rubrica che vi è contenuta.
 
@@ -71,7 +74,7 @@ while True:     #Avvia un ciclo infinito. Il programma continuerà a girare in t
             print("Prima apri una rubrica")
             continue
 
-        nome = input("Nome file: ")
+        nome = input("Nome file: ").strip()      #.strip serve per elimare i problemi degli spazi alla fine che avvolte se presenti generano errore 
 
         rubrica.salva(nome)
 
