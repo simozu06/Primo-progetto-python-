@@ -105,11 +105,10 @@ class Rubrica:      #Stiamo creando una classe chiamata Rubrica che farà quindi
             return
 
         if nome not in self.contatti:     #Se il nome non è all'interno della rubrica mandiamo un messaggio a video e chiudiamo la funzione 
-            print("Il contatto", nome, "non esiste in rubrica")
+            print("Il contatto", nome,"non esiste in rubrica")
             return
 
         #Se invece il nome è presente nella rubrica allora stampiamo il nome e poi tutti i relativi dati scorrendo il dizionario 
-        print(nome)
 
         for chiave, valore in self.contatti[nome].items():
             print(chiave, ":", valore)
