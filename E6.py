@@ -1,4 +1,5 @@
 #Nota generale) A cosa serve encoding="utf-8"? encoding="utf-8" serve a leggere e scrivere correttamente i caratteri speciali (come le lettere accentate) all'interno di un file.
+#Nota generale 2) Istanza e oggetto della classe con la stessa cosa e rappresentano la singola rappresentazione 
 
 import json     #Serve per leggere e scrivere file JSON e più avanti nell'esercizio ci servirà fare ciò
 
@@ -96,16 +97,18 @@ class Rubrica:      #Stiamo creando una classe chiamata Rubrica che farà quindi
                         dati["mail"] + "\n"
                     )
 
-    def stampa(self, nome):
+    #Cerca un contatto specifico e stampa a schermo (sul terminale/console) tutti i suoi dettagli in modo ordinato e leggibile.
+    def stampa(self, nome):    #Prendiamo in input la singola istanza (perchè c'è self) e il nome del contatto da stampare 
 
-        if len(self.contatti) == 0:
+        if len(self.contatti) == 0:   #Di nuovo verifichiamo se la lunghezza dell'oggetto è nulla e in tal caso usciamo dalla funzione stampando un messaggio di errore 
             print("La rubrica è vuota")
             return
 
-        if nome not in self.contatti:
+        if nome not in self.contatti:     #Se il nome non è all'interno della rubrica mandiamo un messaggio a video e chiudiamo la funzione 
             print("Il contatto", nome, "non esiste in rubrica")
             return
 
+        #Se invece il nome è presente nella rubrica allora stampiamo il nome e poi tutti i relativi dati scorrendo il dizionario 
         print(nome)
 
         for chiave, valore in self.contatti[nome].items():
