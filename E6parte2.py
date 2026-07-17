@@ -6,6 +6,7 @@
 #Stai attento quando nel terminale scrivi le robe, non devi inserire spazi dopo o prima delle parole, devi direttamente scrivere. Una
 #soluzione a questo potrebbe essere mettere .split() che serve appunto a eliminare gli spazi bianchi 
 
+#Nota) di solito from modulo import * è sconsigliato pechè ci potrebberò essere conflitti sui nomi. Per risolvere ciò importiamo tutto il modulo (import E6parte1) e poi ogni volta che nel file scriviamo Rubrica dobbiamo scrivere E6parte1.Rubrica per dire da dove pescare il dato nel modulo E6parte1
 from E6parte1 import Rubrica        #Cerca un file chiamato E6parte1.py nella stessa cartella e importa la classe Rubrica che vi è contenuta.
 
 rubrica = None  #Crea una variabile chiamata rubrica e la lascia "vuota"
