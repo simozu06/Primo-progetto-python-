@@ -1,3 +1,7 @@
+#Primo metodo LBYL: La tecnica LBYL (Look Before You Leap, ovvero "guarda prima di saltare") consiste
+#nel verificare preventivamente con degli if che un'operazione sia sicura e valida prima di eseguirla.
+#Tutti i controlli gli faremo con degli if a cascata
+
 #Prima di tutto importiamo le librerie che ci servono (json perchè lavoriamo con file json e random per generare una parola casuale dal file)
 import json
 import random
@@ -38,11 +42,7 @@ while tentativi > 0:        #Ciclo che chiede all'utente di indovinare la letter
     #Chiediamo all'utente di inserire la lettera che vuole verificare e la convertiamo in minuscolo con .lower per non avere problemi con lettere maiuscole
     risposta = input("Inserisci una lettera o la parola: ").lower()     
 
-    #A questo punto vediamo i due controlli con i due metodiù
-
-    #Primo metodo LBYL: La tecnica LBYL (Look Before You Leap, ovvero "guarda prima di saltare") consiste
-    #nel verificare preventivamente con degli if che un'operazione sia sicura e valida prima di eseguirla.
-    #Tutti i controlli gli faremo con degli if a cascata
+    # Vediamo la gestione degli errori 
     if len(risposta) == 1:      #Controllo preventivo 1: L'utente ha inserito una singola lettera?
 
         if risposta.isalpha():      #Controllo preventivo 2: È una lettera dell'alfabeto (e non un numero o simbolo)?
