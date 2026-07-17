@@ -64,7 +64,7 @@ while tentativi > 0:        #Ciclo che chiede all'utente di indovinare la letter
         #Controlla se il tentativo di indovinare la parola intera è corretto. Se lo è, vince 
         #e fa break. Se sbaglia, perde una vita.
 
-        if risposta == parola:
+        if risposta.strip() == parola.strip():  #il .strip() lo aggiungo per togliere eventuali problemi di spazi 
             print("Hai indovinato la parola!")
             break
         else:
