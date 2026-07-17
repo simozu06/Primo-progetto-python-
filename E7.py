@@ -1,3 +1,10 @@
+#Nota generale 1)Perchè il casting di un float a int genera errore?  Quando ho int(inpu()) e inserisco un numero (es.2.2) 
+#questo viene preso non come numero ma come stringa (ovvero 2.2). La funzione int() che fa il 
+#casting accetta stringhe solo con numeri da 0 a 9, quindi, non appena trova un carattere 
+#al di fuori di questi (come il punto) genera value error, per questo motivo il casting di un float a int genera errore 
+#Nota generale 2) Caso particolare: se inserisco 2.0 e  faccio il casting a int per il motivo della nota 1 
+#verrà generato errore anche se 2.0 e 2 matematicamente sono la stessa cosa (una possibile soluzione è fare il casting a float e non a int)
+
 #La prima cosa che facciamo è definire una particolare funzione (che presenta la scritta yield) detta generatore
 #Questa prende in input un parametro (ovvero il numero della tabellina) e tramite un ciclo (da 0 a 10) restituisce 
 #due valori: il moltiplicatore e il prodotto (es. tabellina del 3: 3x7 avrò che 7 è il moltiplicatore e 21 il risultato)
@@ -13,14 +20,14 @@ def gioco():
         try:        #Tenta di eseguire il blocco di codice successivo (permette di gestire potenziali errori).
             numero = int(input("Scegli una tabellina (0-10): "))        #chiediamo il numero della tabellina
 
-        #Gestiamo gli errori (se ho un numero non compreso tra 0 e 10, inclusi, o se l'utente non ha inserito un numero intero)
+        #Gestiamo gli errori (se ho un numero intero non compreso tra 0 e 10, inclusi, o se l'utente non ha inserito un numero intero)
 
             if numero < 0 or numero > 10:
                 print("Inserisci un numero tra 0 e 10.")
             else:
                 break       #Usciamo dal ciclo perchè l'utente ha inserito un numero valido 
 
-        except ValueError:      #Caso particolare: se il try fallisce perchè la conversione di una lettera/simbolo in int genera un valuerror allora stampiamo un messaggio di errore e continuiamo il while 
+        except ValueError:      #Caso particolare: se il try fallisce perchè abbiamo inserito una lettera/simbolo/float perciò il casting a int genera un valuerror allora stampiamo un messaggio di errore e continuiamo il while 
             print("Errore: inserisci un numero intero.")
 
     print("\nPer uscire dal gioco scrivi 'basta'.\n")       #Avvisiamo come si esce dal gioco 
@@ -42,13 +49,15 @@ def gioco():
 
                 if risposta == risultato:   #Se la risposta è giusta usciamo dal while e passiamo al moltiplicatore successivo
                     print("Corretto!\n")
+                    if moltiplicatore == 10:
+                        print ("Complimenti, hai completato la tabellina!")
                     break
                 else:       #Se è sbagliato allora continuiamo il while fino a che non fa giusto 
                     print("Sbagliato, riprova.")
 
-            except ValueError:      #Caso particolare: se la conversione in int fallisce (valuerror con lettere o caratteri) allora messaggio di errore e ricominciamo il while 
+            except ValueError:      #Caso particolare: se la conversione (casting) in int fallisce (valuerror con lettere,caratteri o float) allora messaggio di errore e ricominciamo il while 
                 print("Inserisci solo numeri interi oppure 'basta' per uscire.")
-
+        
 
 # chiamimao la funzione del gioco oer avviare il programma 
 gioco()
