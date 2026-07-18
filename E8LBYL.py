@@ -39,6 +39,8 @@ while tentativi > 0:        #Ciclo che chiede all'utente di indovinare la letter
         print("Complimenti! Hai vinto!")
         break
 
+    #stampiamo le lettere che l'utente ha già provato
+    print(f"Lettere già provate: {lettere_indovinate}")
     #Chiediamo all'utente di inserire la lettera che vuole verificare e la convertiamo in minuscolo con .lower per non avere problemi con lettere maiuscole
     risposta = input("Inserisci una lettera o la parola: ").lower()     
 

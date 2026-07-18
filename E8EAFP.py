@@ -33,7 +33,9 @@ while tentativi > 0:
     if "_" not in parola_nascosta:
         print("Complimenti! Hai vinto!")
         break
-
+    
+    #stampiamo le lettere che l'utente ha già provato
+    print(f"Lettere già provate: {lettere_indovinate}")
     risposta = input("Inserisci una lettera o la parola: ").lower()
 
     #Ecco qua il cambio della gestione dell'errore. Questo cambia il modo di vedere se la lettera è corretta o è già stata inserita 
