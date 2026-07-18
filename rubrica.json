@@ -1,4 +1,12 @@
 {
+    "Paolino Paperino": {
+        "giorno": 9,
+        "mese": "giugno",
+        "anno": 1934,
+        "et\u00e0": 89,
+        "sesso": "M",
+        "mail": "paolino.paperin0@disney.org"
+    },
     "Ron Weasley": {
         "giorno": 1,
         "mese": "marzo",
@@ -23,12 +31,12 @@
         "sesso": "F",
         "mail": "madoka@email.com"
     },
-    "Irene ": {
-        "giorno": 20,
-        "mese": "gennaio",
-        "anno": 2007,
-        "et\u00e0": 19,
-        "sesso": "F",
-        "mail": "Irene.deluca2008@gmail.com"
+    "David": {
+        "giorno": 1,
+        "mese": "luglio",
+        "anno": 1976,
+        "et\u00e0": 50,
+        "sesso": "M",
+        "mail": "Davdel@libero.it"
     }
 }

@@ -1,4 +1,3 @@
-
 #Ricordo: per vedere i metodi di un certo oggetto si usa help(tipo dell'oggetto). Ad esempio help(str)
 
 testo = '''
