@@ -153,7 +153,7 @@ def main():
 
     # lista che conterrà tutti i numeri inseriti
     numeri = []
-    sequenza_massima = []   #sequenza per vedere il numero che ha generato la sequenza massima
+    sequenza_massima = []   #sequenza per vedere il numero che ha generato la sequenza di lunghezza massima
 
     # ciclo che richiede all'utente x numeri, facendo scorrere un contatore da 0 a x-1 e li inserisce nella listachiamta numeri 
     for i in range(x):
@@ -192,9 +192,10 @@ def main():
         else:
             print("I multipli di 5 nella sequenza sono:", multipli_5)
 
-        sequenza_massima.append ((n, l))
+        sequenza_massima.append ((n, l))        #Mettiamo all'interno della sequenza massima la coppia fatta dal numero e dalla lunghezza 
     
-    numero_vincente, lunghezza_vincente = max(sequenza_massima, key = lambda coppia: coppia[1])
+    numero_vincente, lunghezza_vincente = max(sequenza_massima, key = lambda coppia: coppia[1])     #lamda è una funzione utile per operazioni veloci (questa funzione prende la coppia in sequenza_massima e restituisce solo il secondo elemento, la lunghezza)
+    #Quindi a questo punto associamo a numero_vincente e lunghezza_vincente la coppia di sequenza_massima con secondo elemento (la lumghezza l) massimo 
     print (f"\n il numero che ha generato la sequenza più lunga è {numero_vincente}"
            f"(lunghezza {lunghezza_vincente})")
 
