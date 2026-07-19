@@ -1,3 +1,19 @@
+'''
+File: E5.py   
+
+Author: Simone Zuppa   
+
+Date: 2026/07/15
+
+Version: 1.0   
+
+Description: Risoluzione del problema delle N-regine tramite algoritmi stocastici di 
+generazione casuale (Las Vegas). Il programma ottimizza lo spazio di memoria memorizzando 
+le posizioni tramite liste di indici, verifica l'assenza di attacchi sulle diagonali, 
+calcola i tempi medi e l'unicità delle soluzioni trovate, valuta la scalabilità temporale 
+al crescere della scacchiera e implementa le matrici di rotazione a 90°, 180° e 270° per escludere soluzioni geometricamente simmetriche.
+'''
+
 #Inizialmente importiamo questi due moduli che ci serviranno a fare una permutazione casuale dele posizioni
 #delle regine e a calcolare il tempo 
 import random

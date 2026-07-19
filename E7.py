@@ -1,3 +1,18 @@
+'''
+File: E1.py
+
+Author: Simone Zuppa
+
+Date: 2026/07/17
+
+Version: 1.0
+
+Description: Gioco didattico e interattivo per l'apprendimento delle tabelline (da 0 a 10). 
+Il programma utilizza una funzione generatore basata su yield per calcolare i prodotti 
+progressivi e implementa cicli di controllo dei flussi con gestione robusta delle eccezioni 
+(try-except ValueError) per verificare la validità degli input interi inseriti dall'utente a terminale.
+'''
+
 #Nota generale 1)Perchè il casting di un float a int genera errore?  Quando ho int(inpu()) e inserisco un numero (es.2.2) 
 #questo viene preso non come numero ma come stringa (ovvero 2.2). La funzione int() che fa il 
 #casting accetta stringhe solo con numeri da 0 a 9, quindi, non appena trova un carattere 

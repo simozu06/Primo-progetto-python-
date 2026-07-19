@@ -1,3 +1,15 @@
+'''
+File: E2.py 
+
+Author: Simone Zuppa 
+
+Date: 2026/07/12 
+
+Version: 1.0 
+
+Description: Analisi testuale, manipolazione di stringhe e calcolo delle occorrenze su un estratto di una poesia. 
+''' 
+
 #Ricordo: per vedere i metodi di un certo oggetto si usa help(tipo dell'oggetto). Ad esempio help(str)
 
 testo = '''

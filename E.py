@@ -1,3 +1,15 @@
+'''
+File: E.py
+
+Author: Simone Zuppa
+
+Date: 2026/07/19
+
+Version: 1.0
+
+Description: Esercizio a scelta che gestisce un quiz matematico a tempo 
+'''
+
 #La prima cosa che facciamo è importare i moduli necessari 
 import random       #Importa il modulo per generare numeri casuali
 import sympy as sp      #Carica la libreria per il calcolo simbolico. Inoltre usando 'as' usiamo un acronimo di sympy per ridurre il codice 

@@ -1,3 +1,17 @@
+'''
+File: E3.py  
+
+Author: Simone Zuppa  
+
+Date: 2026/07/13 
+
+Version: 1.0  
+
+Description: Gestione e formattazione dei dati di una rubrica di contatti tramite dizionari 
+nidificati. Il programma permette di filtrare, ordinare per età, personalizzare messaggi di 
+auguri in base al sesso e cercare informazioni specifiche accettando comandi e opzioni direttamente dal terminale tramite il modulo argparse. 
+'''  
+
 #Nota generale) in questo esercizio bisogna stare molto attenti alla formattazione delle stringhe 
 #per garantire che vangano stampate nel modo corretto (con tutti gli apici e le virgole corrette)
 #Nota generale 2) per attivare uno dei punti nel terminale si scrive python E3.py --punto 1 (per attivare il punto 1)

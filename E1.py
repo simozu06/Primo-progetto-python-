@@ -1,11 +1,14 @@
 '''
 File: E1.py
+
 Author: Simone Zuppa
+
 Date: 2026/03/15
+
 Version: 1.0
+
 Description: Analisi di una lista di numeri secondo la congettura di Collatz
 '''
-
 
 # 1) FUNZIONE is_pari
 # Controlla se un numero è pari.

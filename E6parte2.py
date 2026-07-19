@@ -1,3 +1,19 @@
+'''
+File: E6parte2.py
+
+Author: Simone Zuppa
+
+Date: 2026/07/16
+
+Version: 1.0
+
+Description: Interfaccia utente a linea di comando (CLI) basata su un menu interattivo 
+continuo (ciclo REPL). Il programma agisce come controller che acquisisce i comandi e i 
+dati di input da tastiera, gestisce lo stato di apertura dell'archivio e invoca i rispettivi 
+metodi della classe Rubrica (importata dal modulo E6parte1) per eseguire le operazioni di 
+I/O, manipolazione e visualizzazione dei contatti.
+'''
+
 #Questa seconda parte: Avvia un ciclo continuo (un menu) che aspetta i comandi digitati dall'utente sulla 
 #tastiera. A seconda del comando inserito (APRI, AGGIUNGI, SALVA, ecc.), fa da "ponte": chiede all'utente 
 #le informazioni necessarie e poi passa questi dati ai metodi della classe Rubrica per eseguire 

@@ -1,3 +1,17 @@
+'''
+File: E4.py   
+
+Author: Simone Zuppa   
+
+Date: 2026/07/14 
+
+Version: 1.0   
+
+Description: Esportazione e importazione di dati di una rubrica di contatti. Il programma 
+gestisce il salvataggio dei dati sia in un file di testo piano (.txt) formattato con valori 
+separati da virgole, sia in un file strutturato (.json) tramite l'omonimo modulo, includendo 
+la successiva rilettura e visualizzazione formattata a schermo del file JSON generato. 
+'''
 #Importiamo il modulo json (insieme di righe di codice già scritto) necessario per questo esercizio per salvare e leggere dati in formato json
    
 import json 

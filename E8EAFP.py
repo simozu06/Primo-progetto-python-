@@ -1,7 +1,24 @@
-#Questo script utilizza l'approccio EAFP ("Easier to Ask Forgiveness than Permission") per la gestione degli errori. Invece di verificare preventivamente 
+'''
+File: E8EAFP.py
+
+Author: Simone Zuppa
+
+Date: 2026/03/18
+
+Version: 1.0
+
+Description: Gioco dell'impiccato basato sul paradigma di programmazione EAFP 
+(Easier to Ask Forgiveness than Permission). Il programma seleziona una parola casuale da 
+un dataset JSON e gestisce l'interazione con l'utente sfruttando costrutti try-except 
+reattivi: intercetta AssertionError per gli input non alfabetici e ValueError 
+(tramite il metodo .index()) per rilevare e gestire l'inserimento di lettere non ancora 
+provate.
+'''
+
+#Questo script utilizza l'approccio EAFP ("Easier to Ask Forgiveness than Permission") per la gestione degli errori. Invece di verificare preventivamente
 #la validità di un'operazione (LBYL), si tenta di eseguirla direttamente all'interno di un blocco 'try' e si gestiscono le eventuali conseguenze (eccezioni) in un blocco 'except' a posteriori.
 #Nota generale) il programa per quel che riguarda la gestione del gioco ha le stesse righe di codice di LBYL, infatti i commenti si pososno riutilizzare uguali
-#Ciò che cambia è la gestione dell'errore: Nel primo file (LBYL) la gestione dell'errore è preventiva: si usano i costrutti if per controllare in anticipo se l'operazione è sicura 
+#Ciò che cambia è la gestione dell'errore: Nel primo file (LBYL) la gestione dell'errore è preventiva: si usano i costrutti if per controllare in anticipo se l'operazione è sicura
 #(es. la lettera è nuova?) e prevenire la nascita di un'eccezione. Nel secondo file (EAFP) la gestione è reattiva: si tenta subito l'operazione dentro un try e si sfrutta
 #l'eccezione (ValueError) intercettandola con except per capire che la lettera non era ancora presente e procedere ad aggiungerla.
 

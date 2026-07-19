@@ -1,3 +1,20 @@
+'''
+File: E8LBYL.py
+
+Author: Simone Zuppa
+
+Date: 2026/07/18
+
+Version: 1.0
+
+Description: Gioco dell'impiccato basato sul paradigma di programmazione LBYL 
+(Look Before You Leap). Il programma seleziona una parola casuale da un file JSON e 
+gestisce l'interazione con l'utente tramite controlli preventivi condizionali 
+(if/else a cascata), verificando l'integrità dell'input (metodo .isalpha()), la 
+lunghezza della stringa e l'eventuale ridondanza dei tentativi prima di eseguire le 
+operazioni in memoria.
+'''
+
 #Primo metodo LBYL: La tecnica LBYL (Look Before You Leap, ovvero "guarda prima di saltare") consiste
 #nel verificare preventivamente con degli if che un'operazione sia sicura e valida prima di eseguirla.
 #Tutti i controlli gli faremo con degli if a cascata

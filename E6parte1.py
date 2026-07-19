@@ -1,3 +1,19 @@
+'''
+File: E6parte1.py
+
+Author: Simone Zuppa
+
+Date: 2026/07/16
+
+Version: 1.0
+
+Description: Definizione della classe Rubrica per la programmazione orientata agli oggetti 
+(OOP). La classe modella e gestisce un archivio di contatti tramite costruttori di istanza 
+e metodi di classe (@classmethod) dedicati all'importazione dei dati da file JSON e CSV/testo
+piano. Include funzionalità per l'aggiunta, la rimozione, la visualizzazione formattata e il 
+salvataggio persistente dei dati su disco con codifica UTF-8.
+'''
+
 #Nota generale) A cosa serve encoding="utf-8"? encoding="utf-8" serve a leggere e scrivere correttamente i caratteri speciali (come le lettere accentate) all'interno di un file.
 #Nota generale 2) Istanza e oggetto della classe con la stessa cosa e rappresentano la singola rappresentazione 
 #Nota generale 3) Ci potrebbero essere problemi legate alle lettere accentate perchè di default python usa ASCII standard che non ha le lettere accentate quindi le sostituisce a una serie di caratteri. 
