@@ -13,13 +13,14 @@ Description: Esercizio a scelta che gestisce un quiz matematico a tempo
 #La prima cosa che facciamo è importare i moduli necessari 
 import random       #Importa il modulo per generare numeri casuali
 import sympy as sp      #Carica la libreria per il calcolo simbolico. Inoltre usando 'as' usiamo un acronimo di sympy per ridurre il codice 
-import time     #Modulo necessario per gestire il tempo e contare i 20 secondi 
+import time     #Modulo necessario per gestire il tempo e contare i 60 secondi 
 
 #Definiamo la funzione per generare in maniera casuale un quiz su una domanda aritmetica, un calcolo di una derivivata o un calcolo di un integrale da risolvere 
 def generatore_domande():   #volta per volta questo genererà casualmente una domanda aritmetica, sulla derivata o sugli integrali
     simboli = sp.symbols('x y')  # Restituisce la tupla (x, y). Nota) La funzione symbols permette di definire più simboli contemporaneamente passandoli come una singola stringa separata da spazi
     x = simboli[0]               # Estrae il primo elemento
     y = simboli[1]               # Estrae il secondo elemento
+    #queste tre righe iniziali corrispondono a x, y = sp.symbols('x y')
     tipi_domanda = ['aritmetica', 'derivata', 'integrale']    #Abbiamo una lista dove all'interno ci sono delle stringhe che decidono in maniera poi casuale il tipo di domanda
     operatori = ['+', '-', '*']     #Definisce gli operatori che si possono usare nell'operazione
     
@@ -75,7 +76,7 @@ def generatore_domande():   #volta per volta questo genererà casualmente una do
             testo_domanda = f"Calcola il valore della DERIVATA di '{expr}' nel punto x={val_x}: "       #Scriviamo il testo della domanda per chiedere la derivata di un espressione in un certo valore x 
             yield testo_domanda, int(risultato_esatto)      #Restituiamo come prima il testo della domanda e il suo risultato 
 
-        elif tipo == 'integrale':       #l'ultimo tipo di domanda è l'integrale 
+        elif tipo == 'integrale':       #l'ultimo tipo di domanda è l'integrale (andrebbe bene anche un else)
             #Generiamo in maniera casuale il coefficente della nostra espressione polinomiale
             coeff_a = random.randint(1, 5)
             #L'espressione di cui chiederemo l'integrale è a * x (tuttavia aggiungiamo un per 2 così da evitare frazioni quando calcoliamo l'integrale di x)
